@@ -3,7 +3,6 @@ package sample.view;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -24,7 +23,7 @@ public class Calculadora extends Stage implements EventHandler {
     private VBox vBox;
     private char[] arNumeros = {'7','8','9','/','4','5','6','*','1','2','3','+','0','.','=','-'};
 
-    Float data = 0f;
+    Float num1 = 0f;
     int operacion = -1;
     boolean bandera=true;
 
@@ -177,44 +176,44 @@ public class Calculadora extends Stage implements EventHandler {
                         txtOperacion.setText(txtOperacion.getText()+tecla+"");
                         break;
                     case '/':
-                        data = Float.parseFloat(txtOperacion.getText());
+                        num1 = Float.parseFloat(txtOperacion.getText());
                         operacion =4;
                         txtOperacion.setText("");
                         break;
                     case '*':
-                        data = Float.parseFloat(txtOperacion.getText());
+                        num1 = Float.parseFloat(txtOperacion.getText());
                         operacion =3;
                         txtOperacion.setText("");
                         break;
                     case '+':
-                        data = Float.parseFloat(txtOperacion.getText());
+                        num1 = Float.parseFloat(txtOperacion.getText());
                         operacion =1;
                         txtOperacion.setText("");
                         break;
                     case '-':
-                        data = Float.parseFloat(txtOperacion.getText());
+                        num1 = Float.parseFloat(txtOperacion.getText());
                         operacion =2;
                         txtOperacion.setText("");
                         break;
                     case '=':
 
-                            Float secundaOp = Float.parseFloat(txtOperacion.getText());
+                            Float num2 = Float.parseFloat(txtOperacion.getText());
                         switch (operacion){
                             case 1:
-                                Float ans=data+secundaOp;
-                                txtOperacion.setText(String.valueOf(ans));
+                                Float rep= num1 +num2;
+                                txtOperacion.setText(String.valueOf(rep));
                                 break;
                             case 2:
-                                ans=data-secundaOp;
-                                txtOperacion.setText(String.valueOf(ans));
+                                rep= num1 -num2;
+                                txtOperacion.setText(String.valueOf(rep));
                                 break;
                             case 3:
-                                ans=data*secundaOp;
-                                txtOperacion.setText(String.valueOf(ans));
+                                rep= num1 *num2;
+                                txtOperacion.setText(String.valueOf(rep));
                                 break;
                                 case 4:
-                                ans=data/secundaOp;
-                                txtOperacion.setText(String.valueOf(ans));
+                                rep= num1 /num2;
+                                txtOperacion.setText(String.valueOf(rep));
                                     break;
 
                         }
