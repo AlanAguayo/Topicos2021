@@ -14,12 +14,12 @@ public class Main extends Application {
 
     private VBox vBox;
     private MenuBar mnbPrincipal;
-    private Menu menCompetencia1,menCompetencia2,menCerrar;
-    private MenuItem mitCalcu, mitRompeCabezas,mniSalir,mitEncriptar;
+    private Menu menCompetencia1, menCompetencia2, menCerrar;
+    private MenuItem mitCalcu, mitRompeCabezas, mniSalir, mitEncriptar;
     private Scene escena;
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         CrearMenu();
 
         primaryStage.setTitle("Proyecto TAP");
@@ -35,49 +35,49 @@ public class Main extends Application {
 
     //Aguayo Sanchez Alan Giovanni
 
-    private void CrearMenu(){
+    private void CrearMenu() {
         vBox = new VBox();
 
         mnbPrincipal = new MenuBar();
-        menCompetencia1=new Menu("Competencia 1");
-        menCompetencia2=new Menu("Competencia 2");
-        menCerrar=new Menu("Cerrar");
-        mnbPrincipal.getMenus().addAll(menCompetencia1,menCompetencia2,menCerrar);
+        menCompetencia1 = new Menu("Competencia 1");
+        menCompetencia2 = new Menu("Competencia 2");
+        menCerrar = new Menu("Cerrar");
+        mnbPrincipal.getMenus().addAll(menCompetencia1, menCompetencia2, menCerrar);
 
-        mitCalcu =new MenuItem("Calculadora");
+        mitCalcu = new MenuItem("Calculadora");
         mitCalcu.setOnAction(event -> opcionesMenu(1));
         mitRompeCabezas = new MenuItem("Rompecabezas");
         mitRompeCabezas.setOnAction(event -> opcionesMenu(2));
         mitEncriptar = new MenuItem("Encriptador");
         mitEncriptar.setOnAction(event -> opcionesMenu(3));
-        menCompetencia1.getItems().addAll(mitCalcu,mitRompeCabezas,mitEncriptar);
+        menCompetencia1.getItems().addAll(mitCalcu, mitRompeCabezas, mitEncriptar);
 
-        mniSalir=new MenuItem("Salir");
+        mniSalir = new MenuItem("Salir");
         mniSalir.setOnAction(event -> System.exit(0));
         menCerrar.getItems().add(mniSalir);
 
         vBox.getChildren().add(mnbPrincipal);
 
-        escena = new Scene(vBox,300,70);
+        escena = new Scene(vBox, 300, 70);
     }
 
     private void opcionesMenu(int opc) {
-        switch(opc){
-            case 1:new Calculadora();
-            break;
-            case 2:new Rompecabezas();
-            break;
-            case 3:new Encriptador();
-            break;
+        switch (opc) {
+            case 1:
+                new Calculadora();
+                break;
+            case 2:
+                new Rompecabezas();
+                break;
+            case 3:
+                new Encriptador();
+                break;
         }
     }
 
-    private void CrearUI(Stage primaryStage){
+    private void CrearUI(Stage primaryStage) {
 
         //Menu
-
-
-
 
 
         //Parte 1 hbox,vbox
