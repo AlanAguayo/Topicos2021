@@ -12,7 +12,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import javax.swing.plaf.ToolBarUI;
+import java.io.*;
 
 public class Encriptador extends Stage implements EventHandler<KeyEvent> {
 
@@ -25,9 +27,9 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent> {
     private Button btnEncriptar;
     private Button btnTolAbrir;
     private FileChooser fileChooser;
+    private char array[];
 
     public Encriptador() {
-
         CrearUI();
 
         this.setTitle("Funcion de encriptacion con HASH");
@@ -50,6 +52,7 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent> {
         txtEntrada = new TextArea();
         txtEntrada.setOnKeyPressed(this);
 
+
         txtSalida = new TextArea();
         txtSalida.setEditable(false);
 
@@ -58,24 +61,101 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent> {
         btnEncriptar.setOnAction(event -> encriptarEntrada());
         vBox.getChildren().addAll(tolMenu, hBox, btnEncriptar);
 
+
+
         escena = new Scene(vBox, 600, 300);
 
     }
 
     private void encriptarEntrada() {
+
+        fileChooser=new FileChooser();
+        fileChooser.setTitle("Encriptar");
+        File file = fileChooser.showSaveDialog(this);
+
+        if(file!=null){
+
+            char array[];
+            array=txtEntrada.getText().toCharArray();
+
+            for(int i = 0;i<array.length;i++){
+                array[i]=(char)(array[i]+(char)6);
+            }
+
+
+            guardarTexto(String.valueOf(array),file);
+        }
     }
 
     private void abrirArchivo() {
         fileChooser = new FileChooser();
         fileChooser.setTitle("Buscar archivo a encriptar");
-        fileChooser.showOpenDialog(this);
-    }
+        File file = fileChooser.showSaveDialog(this);
+
+        if(file!=null){
+            FileReader fr = null;
+            BufferedReader br = null;
+            String texto = "";
+            try {
+                fr = new FileReader(file);
+                br = new BufferedReader(fr);
+                String st = br.readLine();
+                while (st != null) {
+                    texto = texto + st + "\n";
+                    st = br.readLine();
+                }
+            } catch (Exception e) {
+                txtSalida.appendText(e.toString());
+                txtEntrada.appendText(e.toString());
+            } finally {
+                try {
+                    fr.close();
+                } catch (Exception e2) {
+                    txtSalida.appendText(e2.toString());
+                    txtEntrada.appendText(e2.toString());
+                }
+            }
+            txtSalida.appendText(texto);
+
+
+            array=texto.toCharArray();
+
+            for(int i =0; i<array.length;i++){
+
+                array[i]=(char)(array[i]-(char) 6);
+            }
+
+            txtEntrada.setText(String.valueOf(array));
+
+
+        }
+
+        }
+
 
     @Override
     public void handle(KeyEvent event) {
 
-        txtSalida.appendText(event.getCode().ordinal()+"");
+        array=event.getText().toCharArray();
 
+
+
+        if(event.getCode().ordinal()==1) {
+            txtSalida.setText(txtSalida.getText().substring(0,txtSalida.getText().length()-1));
+        }
+
+
+
+
+        for(int i =0; i<array.length;i++){
+
+            array[i]=(char)(array[i]+(char) 6);
+        }
+
+        txtSalida.appendText(String.valueOf(array));
+
+
+        /*txtSalida.appendText(event.getCode().ordinal()+"");
         switch(event.getCode().toString()){
             case "A":
                 txtSalida.appendText("A");
@@ -83,6 +163,18 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent> {
             case "B":
                 txtSalida.appendText("B");
                 break;
+                */
+
+        }
+
+
+    private void guardarTexto(String content, File file) {
+        try {
+            PrintWriter writer;
+            writer = new PrintWriter(file);
+            writer.println(content);
+            writer.close();
+        } catch (IOException ex) {
+        }
         }
     }
-}
