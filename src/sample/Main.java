@@ -1,16 +1,18 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import sample.view.Calculadora;
 import sample.view.Encriptador;
 import sample.view.Rompecabezas;
 
 
-public class Main extends Application {
+public class Main extends Application implements EventHandler<WindowEvent> {
 
     private VBox vBox;
     private MenuBar mnbPrincipal;
@@ -22,6 +24,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         CrearMenu();
 
+        primaryStage.addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST,this);
         primaryStage.setTitle("Proyecto TAP");
         primaryStage.setScene(escena);
         primaryStage.setMaximized(true);
@@ -198,4 +201,14 @@ public class Main extends Application {
 
     }
 
+
+
+    @Override
+    public void handle(WindowEvent event) {
+        Alert alerta=new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("Mensaje del Sistema");
+        alerta.setHeaderText("Gracias por usar la aplicacion :)");
+        alerta.setContentText("Vuelva Pronto");
+        alerta.showAndWait();
+    }
 }

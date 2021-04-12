@@ -3,6 +3,7 @@ package sample.view;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -200,7 +201,12 @@ public class Rompecabezas extends Stage implements EventHandler {
 
 
         if (comp) {
-            JOptionPane.showMessageDialog(null, "Termino el rompecabezas. Felicidades!!!");
+            //JOptionPane.showMessageDialog(null, "Termino el rompecabezas. Felicidades!!!");
+            Alert alerta=new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("Mensaje del Sistema");
+            alerta.setHeaderText("Lograste completar el rompecabezas!!");
+            alerta.setContentText("Vuelva Pronto :D");
+            alerta.showAndWait();
         }
 
 
