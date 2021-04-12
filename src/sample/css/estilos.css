@@ -1,0 +1,6 @@
+.root{
+    -fx-background-image: url(/sample/assets/Fondo.jpg);
+    -fx-background-repeat: stretch;
+    -fx-background-size: auto;
+    -fx-background-position: center;
+}

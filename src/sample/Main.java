@@ -62,6 +62,10 @@ public class Main extends Application implements EventHandler<WindowEvent> {
         vBox.getChildren().add(mnbPrincipal);
 
         escena = new Scene(vBox, 300, 70);
+
+        //Implementacion de una hoja de estilo css
+        escena.getStylesheets().add(getClass().getResource("css/estilos.css").toExternalForm());
+
     }
 
     private void opcionesMenu(int opc) {
