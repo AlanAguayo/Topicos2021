@@ -72,6 +72,10 @@ public class Calculadora extends Stage implements EventHandler {
                 pos++;
             }
         }
+
+        arBotones[pos-1].setId("font-button");
+
+
         vBox.getChildren().addAll((txtOperacion), hBoxes[0], hBoxes[1], hBoxes[2], hBoxes[3]);
         vBox.setPadding(new Insets(8, 5, 5, 5));
 
@@ -81,6 +85,9 @@ public class Calculadora extends Stage implements EventHandler {
 
 
         escena = new Scene(vBox, 250, 250);
+
+        escena.getStylesheets().add(getClass().getResource("../css/estilos_calcu.css").toExternalForm());
+
     }
 
     @Override

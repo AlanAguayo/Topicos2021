@@ -1,6 +1,42 @@
 .root{
-    -fx-background-image: url(/sample/assets/Fondo.jpg);
-    -fx-background-repeat: stretch;
-    -fx-background-size: auto;
-    -fx-background-position: center;
+    -fx-background-image: url(/sample/assets/Fondo.jpg), url(/sample/assets/Logo.png);
+    -fx-background-repeat: stretch, no-repeat;
+    -fx-background-size: auto, 500 500;
+    -fx-background-position: center, right top;
+}
+
+
+.menu-bar{
+    -fx-background-color: #00D2FF;
+    -fx-border-color: #000;
+    -fx-border-width: 2;
+}
+
+
+.menu:hover{
+    -fx-background-color: #777777;
+    -fx-font-weight: bold;
+}
+
+
+.label:hover{
+    -fx-font-size: 15 pt;
+    -fx-text-fill: white;
+}
+
+
+.menu-item{
+    -fx-background-color: #72F8FF;
+    -fx-border-color: #000;
+}
+
+
+.menu-item:hover{
+    -fx-background-color: #777777;
+    -fx-font-weight: bold;
+}
+
+
+#rubensin{
+
 }
