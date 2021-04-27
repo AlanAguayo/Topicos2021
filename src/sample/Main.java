@@ -7,8 +7,10 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import sample.models.Conexion;
 import sample.view.Calculadora;
 import sample.view.Encriptador;
+import sample.view.FrmCanciones;
 import sample.view.Rompecabezas;
 
 
@@ -17,7 +19,7 @@ public class Main extends Application implements EventHandler<WindowEvent> {
     private VBox vBox;
     private MenuBar mnbPrincipal;
     private Menu menCompetencia1, menCompetencia2, menCerrar;
-    private MenuItem mitCalcu, mitRompeCabezas, mniSalir, mitEncriptar;
+    private MenuItem mitCalcu, mitRompeCabezas, mniSalir, mitEncriptar, mitBDCanciones;
     private Scene escena;
 
     @Override
@@ -29,6 +31,9 @@ public class Main extends Application implements EventHandler<WindowEvent> {
         primaryStage.setScene(escena);
         primaryStage.setMaximized(true);
         primaryStage.show();
+
+        //Abrimos la conexion de manera global
+        Conexion.getConexion();
     }
 
 
@@ -53,7 +58,9 @@ public class Main extends Application implements EventHandler<WindowEvent> {
         mitRompeCabezas.setOnAction(event -> opcionesMenu(2));
         mitEncriptar = new MenuItem("Encriptador");
         mitEncriptar.setOnAction(event -> opcionesMenu(3));
-        menCompetencia1.getItems().addAll(mitCalcu, mitRompeCabezas, mitEncriptar);
+        mitBDCanciones = new MenuItem("BDCanciones");
+        mitBDCanciones.setOnAction(event -> opcionesMenu(4));
+        menCompetencia1.getItems().addAll(mitCalcu, mitRompeCabezas, mitEncriptar,mitBDCanciones);
 
         mniSalir = new MenuItem("Salir");
         mniSalir.setOnAction(event -> System.exit(0));
@@ -78,6 +85,9 @@ public class Main extends Application implements EventHandler<WindowEvent> {
                 break;
             case 3:
                 new Encriptador();
+                break;
+            case 4:
+                new FrmCanciones();
                 break;
         }
     }

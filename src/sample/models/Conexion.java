@@ -10,12 +10,12 @@ public class Conexion {
     private static String pwd    = "123";
     private static String db     = "musicadb";
 
-    private static Connection conexion;
+    public static Connection conexion;
     public static void getConexion(){
         try{
 
             Class.forName("org.mariadb.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mariadb://"+server+"3306/"+db,user,pwd);
+            conexion = DriverManager.getConnection("jdbc:mariadb://"+server+":3306/"+db,user,pwd);
 
         }catch(Exception e){
             e.printStackTrace();
