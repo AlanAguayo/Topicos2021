@@ -70,7 +70,7 @@ public class CancionesDAO {
     public void INSERT(){
         try{
             String query = "INSERT INTO tbl_canciones (nombre_cancion, duracion, portada, anio, letra) " +
-                    "VALUES('"+nombre_cancion+"',"+duracion+","+portada+","+anio+",'"+letra+"')";
+                    "VALUES('"+nombre_cancion+"',"+duracion+",'"+portada+"',"+anio+",'"+letra+"')";
 
             Statement stmt = Conexion.conexion.createStatement();
             stmt.executeUpdate(query);
@@ -119,6 +119,7 @@ public class CancionesDAO {
                 objC.nombre_cancion = res.getString("nombre_cancion");
                 objC.duracion = res.getInt("duracion");
                 objC.portada = res.getString("portada");
+                objC.anio = res.getInt("anio");
                 objC.letra = res.getString("letra");
                 listaC.add(objC);
             }
