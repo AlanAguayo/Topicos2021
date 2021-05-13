@@ -7,11 +7,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import sample.components.Corredor;
 import sample.models.Conexion;
-import sample.view.Calculadora;
-import sample.view.Encriptador;
-import sample.view.FrmCanciones;
-import sample.view.Rompecabezas;
+import sample.view.*;
 
 
 public class Main extends Application implements EventHandler<WindowEvent> {
@@ -19,8 +17,9 @@ public class Main extends Application implements EventHandler<WindowEvent> {
     private VBox vBox;
     private MenuBar mnbPrincipal;
     private Menu menCompetencia1, menCompetencia2, menCerrar;
-    private MenuItem mitCalcu, mitRompeCabezas, mniSalir, mitEncriptar, mitBDCanciones;
+    private MenuItem mitCalcu, mitRompeCabezas, mniSalir, mitEncriptar, mitBDCanciones, mitCorredores;
     private Scene escena;
+    private Corredor corredor;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -34,6 +33,13 @@ public class Main extends Application implements EventHandler<WindowEvent> {
 
         //Abrimos la conexion de manera global
         Conexion.getConexion();
+
+        //new Corredor("Homero").start();
+        //new Corredor("Flash").start();
+        //new Corredor("Quick Silver").start();
+        //new Corredor("Bob Esponja").start();
+        //new Corredor("Shrek").start();
+
     }
 
 
@@ -62,6 +68,10 @@ public class Main extends Application implements EventHandler<WindowEvent> {
         mitBDCanciones.setOnAction(event -> opcionesMenu(4));
         menCompetencia1.getItems().addAll(mitCalcu, mitRompeCabezas, mitEncriptar,mitBDCanciones);
 
+        mitCorredores = new MenuItem("Ejecucion de Hilos");
+        mitCorredores.setOnAction(event -> opcionesMenu(5));
+        menCompetencia2.getItems().addAll(mitCorredores);
+
         mniSalir = new MenuItem("Salir");
         mniSalir.setOnAction(event -> System.exit(0));
         menCerrar.getItems().add(mniSalir);
@@ -88,6 +98,9 @@ public class Main extends Application implements EventHandler<WindowEvent> {
                 break;
             case 4:
                 new FrmCanciones();
+                break;
+            case 5:
+                new Pista();
                 break;
         }
     }
